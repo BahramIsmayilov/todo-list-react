@@ -1,3 +1,10 @@
 body {
   font-family: "Open Sans", sans-serif !important;
 }
+input[type="text"],
+textarea,
+button {
+  outline: none;
+  box-shadow: none !important;
+  border: 1px solid #ccc !important;
+}
