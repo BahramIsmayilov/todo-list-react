@@ -21,24 +21,33 @@ class App extends Component {
     e.preventDefault();
     const newItem = { id: this.state.id, title: this.state.item };
     const updateItems = [...this.state.items, newItem];
-    this.setState(
-      {
-        items: updateItems,
-        id: uuid(),
-        item: "",
-        editItem: false
-      },
-      () => console.log(this.state)
-    );
+    this.setState({
+      items: updateItems,
+      id: uuid(),
+      item: "",
+      editItem: false
+    });
   };
   clearList = () => {
-    console.log("clear list");
+    this.setState({
+      items: []
+    });
   };
   handleDelete = id => {
-    console.log(`handle Delete ${id}`);
+    const deleteItem = this.state.items.filter(item => item.id !== id);
+    this.setState({
+      items: deleteItem
+    });
   };
   handleEdit = id => {
-    console.log(`handle Edit ${id}`);
+    const deleteItem = this.state.items.filter(item => item.id !== id);
+    const selectItem = this.state.items.find(item => item.id === id);
+    this.setState({
+      items: deleteItem,
+      item: selectItem.title,
+      id: id,
+      editItem: true
+    });
   };
   render() {
     return (
